@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fgr Url Shortener</title>
+    <link rel="stylesheet" href="/bootstrap.min.css">
+    <style>
+        .col-8 {
+            border: 2px solid grey;
+        }
+
+        .spinner-border {
+            width: 5rem;
+            height: 5rem;
+            color: #2196f3;
+        }
+    </style>
+</head>
+
+<body class="bg-dark">
+    <div class="container">
+        <div class="row m-auto my-3">
+            <div class="col-12">
+                <h3 class="text-center text-primary">
+                    Please Click on Continue Button Below...
+                </h3>
+            </div>
+            <div class="col-8 m-auto p-5">
+                <div class="row text-center">
+                    <div class="col-12 m-auto">
+                        <button id="continue" class="btn btn-outline-info m-auto">Continue</button>
+                    </div>
+                    <div class="col-6 d-none m-auto mt-5" id="timerBox">
+                        <div class="spinner-border text-info text-center p-3" id="timer" role="status">
+
+                        </div>
+                    </div>
+                    <div class="col-12 d-none m-auto mt-5 text-center" id="linkbtn">
+                        <a id="link" href="<%= getshortUrl.fullLink %>" class="btn btn-outline-success m-auto">Open Link</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        let continueBtn = document.getElementById('continue');
+        let linkbtn = document.getElementById('linkbtn');
+        continueBtn.onclick = () => {
+            continueBtn.style.display = 'none';
+            let timerBox = document.getElementById('timerBox');
+            let timer = document.getElementById('timer');
+            timerBox.classList.remove('d-none');
+            let timerCount = 10;
+            timer.innerHTML = timerCount+"s";
+            setInterval(() => {
+                timerCount -= 1;
+                if (timerCount <= 0) {
+                    timerCount = 0;
+                    timer.classList.remove('spinner-border');
+                    timer.style.border = '2px solid grey';
+                    linkbtn.classList.remove('d-none');
+                }
+                timer.innerHTML = timerCount + 's'
+            }, 1000);
+        };
+
+
+    </script>
+</body>
+
+</html>

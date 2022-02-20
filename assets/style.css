@@ -1,0 +1,12 @@
+.form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    border: 1px groove gray;
+}
+
+button, input, label{
+    margin: 0.5rem;
+    color: wheat;
+}
